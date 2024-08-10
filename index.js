@@ -22,8 +22,8 @@ const logger = createLogger({
   format: format.cli(),
   transports: [new transports.Console()],
 })
-const PATH_BOILERPLATE_EMAIL_TEMPLATE = `${process.cwd()}/boilerplate/email-template/index.html`
-const PATH_BOILERPLATE_EMAIL_FRAGMENT = `${process.cwd()}/boilerplate/email-fragment/index.html`
+const PATH_BOILERPLATE_EMAIL_TEMPLATE = `${__dirname}/boilerplate/email-template/index.html`
+const PATH_BOILERPLATE_EMAIL_FRAGMENT = `${__dirname}/boilerplate/email-fragment/index.html`
 const RTE_PROJECT = {
   name: '',
   fragmentNames: [],
@@ -48,7 +48,7 @@ const defineProjectDirectory = (args) => {
   return new Promise((resolve) => {
     try {
       if (fs.existsSync(projectName)) {
-        logger.error(`Project folder "${projectName}" already exists in "${__dirname}".`)
+        logger.error(`Project folder "${projectName}" already exists in "${process.cwd()}".`)
         process.exit(1)
       }
   
@@ -132,7 +132,7 @@ const setupRTEProject = async () => {
       await Promise.all(fragmentDirectories)
     }
 
-    logger.info(`Created RTE boilerplate located at "${__dirname}"`)
+    logger.info(`Created RTE boilerplate located at "${process.cwd()}"`)
     process.exit(0)
   }
   
@@ -143,4 +143,5 @@ const setupRTEProject = async () => {
 
 }
 
+console.log(__dirname)
 main(process.argv)
