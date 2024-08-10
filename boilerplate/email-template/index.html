@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <style>
+    body {
+      height: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Arial', sans-serif;
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .footer td {
+      font-size: 12px;
+      line-height: 17px;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+      body {
+        max-width: 100%;
+      }
+
+      table.container table {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      table.container .header img {
+        width: 100% !important;
+        height: auto;
+      }
+
+      .email-body td {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body id="body" align="center"
+  style="background-color:#ffffff; margin: auto; padding:0;-webkit-text-size-adjust:none; text-size-adjust:none;">
+  <!--[if mso]>
+   <style type="text/css">
+      body, table, td {font-family: Arial, sans-serif !important;}
+   </style>
+   <![endif]-->
+
+  <!-- [HIDDEN] Pre-header -->
+  <table role="presentation">
+    <tr>
+      <td style="line-height:0; display: none;">
+        {{customText[Pre-header 1|Pre-header 2]}}
+        <div style="display: none; max-height: 0px; overflow: hidden;">
+          &nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+  <!-- Email Body Container -->
+  <table class="container" border="0" cellspacing="0" cellpadding="0" width="100%" role="presentation">
+    <tr>
+      <td valign="top" align="center">
+
+        <!-- HEADER -->
+        <table class="header" border="0" cellpadding="0" cellspacing="0" style="vertical-align: top; width: 600px;"
+          role="presentation">
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <img src="https://placehold.co/600x300" alt="" width="600" height="300" style="display: block;">
+            </td>
+          </tr>
+        </table>
+
+        <!-- INTRODUCTION -->
+        <table class="email-body" border="0" cellpadding="0" cellspacing="0" style="vertical-align: top; width: 600px;"
+          role="presentation">
+          <tr>
+            <td style="padding-bottom: 20px;">
+              {{customText[Dear|Hello|Hi]}} {{accTitle}} {{accLname}},
+            </td>
+          </tr>
+        </table>
+
+        <!-- EMAIL CONTENT -->
+        <table class="email-body" border="0" cellpadding="0" cellspacing="0" style="vertical-align: top; width: 600px;"
+          role="presentation">
+          <tr>
+            <td style="padding-bottom: 20px;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis sunt nesciunt quaerat, rerum labore
+              et, quibusdam, commodi minus praesentium reprehenderit fugit sequi debitis nemo perspiciatis quas! Ab ipsa
+              eveniet sint.
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;">
+              {{insertEmailFragments[1,2]}}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;">
+              Vivamus sed lacus sit amet nulla consectetur faucibus. Etiam sed tincidunt nisl, ut finibus ipsum. Aenean
+              ullamcorper, odio quis fringilla tristique, erat ligula vehicula mauris, et aliquam neque elit pharetra
+              dui. Praesent quis dignissim lectus.
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;">
+              {{emailTemplateFragment}}             
+            </td>
+          </tr>
+        </table>
+
+        <!-- SIGN OFF -->
+        <table class="email-body" border="0" cellpadding="0" cellspacing="0" style="vertical-align: top; width: 600px;"
+          role="presentation">
+          <tr>
+            <td style="padding-bottom: 20px;">
+              {{customText[Sign off 1|Sign off 2]}},
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;">
+              {{userName}}<br>
+              <a href="#" style="color:#000000; cursor: auto; text-decoration: none;">{{User.MobilePhone}}</a><br>
+              <a href="mailto:{{userEmailAddress}}"
+                style="color: #1462ac; text-decoration: underline;">{{userEmailAddress}}</a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- FOOTER -->
+        <table class="footer" border="0" cellpadding="0" cellspacing="0"
+          style="vertical-align: top; width: 600px; background-color: #e9e9e8;" role="presentation">
+          <tr>
+            <td style="padding: 20px 20px 0 20px;">
+              Footer legal copy
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 20px 20px 0 20px;">
+              <span style="color: magenta;">
+                [jobcode]
+              </span>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:20px;">
+              <img src="https://placehold.co/120x60" alt="" width="120" height="60" style="display: block;">
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
