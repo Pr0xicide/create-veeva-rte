@@ -27,7 +27,7 @@ const program = new Command()
 program
   .name('create-veeva-rte')
   .description('CLI tool to quickly setup Veeva RTEs boilerplate files.')
-  .version('0.2.1')
+  .version('0.3.0')
 
 program
   .command('project')
