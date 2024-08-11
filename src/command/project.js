@@ -3,6 +3,7 @@ const {
   PATH_BOILERPLATE_EMAIL_TEMPLATE,
   PATH_BOILERPLATE_EMAIL_FRAGMENT,
 } = require('../util/boilerplate')
+const { isValidFilename } = require('../validate/filename')
 
 const RTE_PROJECT = {
   name: '',
@@ -28,11 +29,14 @@ const defineProjectDirectory = async () => {
   return new Promise((resolve) => {
     rl.question('RTE project directory name: ', (directoryName) => {
       try {
-        if (fs.existsSync(directoryName)) {
-          logger.error(
+        if (!isValidFilename(directoryName)) {
+          throw new Error(
+            `Cannot create directory "${directoryName}" as it contains either special characters or has reserved names.`
+          )
+        } else if (fs.existsSync(directoryName)) {
+          throw new Error(
             `Project folder "${directoryName}" already exists in "${process.cwd()}".`
           )
-          process.exit(1)
         }
 
         RTE_PROJECT.name = directoryName
@@ -69,7 +73,13 @@ const defineEmailFragments = async () => {
       fragmentPromises.push(
         await new Promise((resolve) => {
           rl.question(`Fragment ${i + 1} name: `, (fragmentName) => {
-            // TODO: Validate fragment name.
+            if (!isValidFilename(fragmentName)) {
+              logger.error(
+                `Cannot create fragment "${fragmentName}" as it contains either special characters or has reserved names.`
+              )
+              process.exit(1)
+            }
+
             RTE_PROJECT.fragmentNames.push(fragmentName)
             resolve()
           })

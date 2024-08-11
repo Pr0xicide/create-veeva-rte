@@ -8,10 +8,10 @@ CLI tool to quickly setup Veeva RTEs boilerplate files (email template and fragm
 
 ### NPX
 
-Simply open a terminal an run the following command below to create an RTE project in current directory:
+Run the following command below to create an RTE project in current directory:
 
 ```bash
-npx create-veeva-rte email-project-name
+npx create-veeva-rte project
 ```
 
 ### Global
@@ -22,11 +22,35 @@ Or install this package globally using:
 npm install create-veeva-rte -g
 ```
 
-Then to run the following in your terminal:
+Then run the following in your terminal:
 
 ```bash
-create-veeva-rte email-project-name
+create-veeva-rte project
 ```
+
+## Commands
+
+### Project
+
+Creates a new directory with 1 email template and multiple email fragments.
+
+Example:
+
+```bash
+npx create-veeva-rte project
+RTE project directory name: example-rte-directory-name
+Number of fragments: 2
+Fragment 1 name: Fragment 1
+Fragment 2 name: Fragment 2
+```
+
+## Email Template
+
+TODO - WIP
+
+## Email Fragment
+
+TODO - WIP
 
 ## Additional Resources
 

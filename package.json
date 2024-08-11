@@ -1,6 +1,6 @@
 {
   "name": "create-veeva-rte",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CLI tool to quickly setup Veeva RTEs boilerplate files (email template and fragments) in your current directory.",
   "author": "Jayvin Duong",
   "license": "MIT",
@@ -13,7 +13,9 @@
     "url": "https://github.com/Pr0xicide/create-veeva-rte"
   },
   "scripts": {
-    "create-veeva-rte": "node bin/index.js",
+    "project": "node bin/index.js project",
+    "test": "jest",
+    "dev": "jest --watch",
     "prepare": "husky"
   },
   "keywords": [
