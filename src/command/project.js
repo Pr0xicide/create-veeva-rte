@@ -4,6 +4,10 @@ const {
   createEmailTemplates,
   createEmailFragments,
 } = require('../util/create-file')
+const {
+  DIR_EMAIL_TEMPLATE,
+  DIR_EMAIL_FRAGMENT,
+} = require('../util/boilerplate')
 
 const RTE_PROJECT = {
   name: '',
@@ -171,13 +175,22 @@ const defineEmailFragments = async () => {
  * @returns {void}
  */
 const setupRTEProject = async () => {
-  const { name } = RTE_PROJECT
+  const { name, emailFragmentNames } = RTE_PROJECT
 
   return new Promise(async (resolve) => {
     try {
+      // Create RTE project directory.
       await fs.mkdirSync(`${name}`)
+
+      // Create email template sub-directory and files.
+      await fs.mkdirSync(`${name}/${DIR_EMAIL_TEMPLATE}`)
       await createEmailTemplates(RTE_PROJECT)
-      await createEmailFragments(RTE_PROJECT)
+
+      // Create email fragment sub-directory and files.
+      if (emailFragmentNames.length > 0) {
+        await fs.mkdirSync(`${name}/${DIR_EMAIL_FRAGMENT}`)
+        await createEmailFragments(RTE_PROJECT)
+      }
 
       resolve()
     } catch (err) {

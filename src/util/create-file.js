@@ -5,16 +5,48 @@ const {
   PATH_BOILERPLATE_EMAIL_TEMPLATE,
   PATH_BOILERPLATE_EMAIL_FRAGMENT,
 } = require('./boilerplate')
+const { FILE_TYPES } = require('./file-types')
 
 /**
  * Creates the HTML file for the Veeva RTE project.
  *
+ * @param {Object{directory: String, fileName: String, fileType: FILE_TYPES}} params
  * @returns {void}
  */
-const createRTEFile = async (params) => {}
+const createRTEFile = (params) => {
+  const { directory, fileName, fileType } = params
+  let subDir, boilerplateFile
+
+  return new Promise(async (resolve) => {
+    switch (fileType) {
+      case FILE_TYPES.EMAIL_TEMPLATE:
+        subDir = `${DIR_EMAIL_TEMPLATE}`
+        boilerplateFile = `${PATH_BOILERPLATE_EMAIL_TEMPLATE}`
+        break
+      case FILE_TYPES.EMAIL_FRAGMENT:
+        subDir = `${DIR_EMAIL_FRAGMENT}`
+        boilerplateFile = `${PATH_BOILERPLATE_EMAIL_FRAGMENT}`
+        break
+    }
+
+    // Create directory for file.
+    await fs.mkdirSync(`${directory}/${subDir}/${fileName}`)
+
+    // Copy and paste boilerplate file to directory.
+    await fs.copyFile(
+      `${boilerplateFile}`,
+      `./${directory}/${subDir}/${fileName}/index.html`,
+      (err) => {
+        if (err) throw err
+      }
+    )
+
+    resolve()
+  })
+}
 
 /**
- * Creates email templates from an array of file names.
+ * Create email templates from an array of file names.
  *
  * @param {{name: String, emailTemplateNames: Array<String>}} params
  * @returns {void}
@@ -23,22 +55,13 @@ const createEmailTemplates = async (params) => {
   const { name, emailTemplateNames } = params
   const promises = []
 
-  // Create directory for email templates.
-  await fs.mkdirSync(`${name}/${DIR_EMAIL_TEMPLATE}`)
-
   // Create email template files.
   emailTemplateNames.forEach(async (templateName) => {
     promises.push(
-      await new Promise(async (resolve) => {
-        await fs.mkdirSync(`${name}/${DIR_EMAIL_TEMPLATE}/${templateName}`)
-        await fs.copyFile(
-          `${PATH_BOILERPLATE_EMAIL_TEMPLATE}`,
-          `./${name}/${DIR_EMAIL_TEMPLATE}/${templateName}/index.html`,
-          (err) => {
-            if (err) throw err
-          }
-        )
-        resolve()
+      createRTEFile({
+        directory: name,
+        fileName: templateName,
+        fileType: FILE_TYPES.EMAIL_TEMPLATE,
       })
     )
   })
@@ -50,7 +73,7 @@ const createEmailTemplates = async (params) => {
 }
 
 /**
- * Creates email fragments from an array of file names.
+ * Create email fragments from an array of file names.
  *
  * @param {{name: String, emailFragmentNames: Array<String>}} params
  * @returns {void}
@@ -59,29 +82,13 @@ const createEmailFragments = async (params) => {
   const { name, emailFragmentNames } = params
   const promises = []
 
-  // If no email fragments were defined by the user.
-  if (emailFragmentNames.length === 0) {
-    return new Promise((resolve) => {
-      resolve()
-    })
-  }
-
-  // Create directory for email fragments.
-  await fs.mkdirSync(`${name}/${DIR_EMAIL_FRAGMENT}`)
-
   // Create email fragment files.
   emailFragmentNames.forEach(async (fragmentName) => {
     promises.push(
-      await new Promise(async (resolve) => {
-        await fs.mkdirSync(`${name}/${DIR_EMAIL_FRAGMENT}/${fragmentName}`)
-        await fs.copyFile(
-          `${PATH_BOILERPLATE_EMAIL_FRAGMENT}`,
-          `./${name}/${DIR_EMAIL_FRAGMENT}/${fragmentName}/index.html`,
-          (err) => {
-            if (err) throw err
-          }
-        )
-        resolve()
+      createRTEFile({
+        directory: name,
+        fileName: fragmentName,
+        fileType: FILE_TYPES.EMAIL_FRAGMENT,
       })
     )
   })
