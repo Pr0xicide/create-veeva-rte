@@ -32,9 +32,11 @@ create-veeva-rte
 
 ### Project
 
-Creates a new directory containing multiple email templates and fragments.
+Usage: `npx create-veeva-rte project`
 
-Example for creating 1 new email template containing 2 email fragments.
+Description: Creates a new directory containing multiple email templates and fragments.
+
+Example:
 
 ```bash
 npx create-veeva-rte project
@@ -48,7 +50,7 @@ Email fragment 1 name: fragment 1
 Email fragment 2 name: fragment 2
 ```
 
-The example above would create the following directory structure in your current working directory.
+Output:
 
 ```text
 .
@@ -65,11 +67,45 @@ The example above would create the following directory structure in your current
 
 ## Email Template
 
-TODO - WIP
+Usage: `npx create-veeva-rte email-template {{directory name}}`
+
+Description: Creates 1 new **email template** in the current working directory.
+
+Example:
+
+```bash
+npx create-veeva-rte email-template MOA
+```
+
+Output:
+
+```text
+.
+`-- current-working-directory/
+    `-- MOA/
+        `-- index.html
+```
 
 ## Email Fragment
 
-TODO - WIP
+Usage: `npx create-veeva-rte email-fragment {{directory name}}`
+
+Description: Creates 1 new **email fragment** in the current working directory.
+
+Example:
+
+```bash
+npx create-veeva-rte email-fragment summary
+```
+
+Output:
+
+```text
+.
+`-- current-working-directory/
+    `-- summary/
+        `-- index.html
+```
 
 ## Additional Resources
 
