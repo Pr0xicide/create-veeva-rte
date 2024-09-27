@@ -5,6 +5,8 @@ const readline = require('readline')
 const { createLogger, format, transports } = require('winston')
 const { Command } = require('commander')
 const { createRTEProject } = require('../src/command/project')
+const { createEmailTemplate } = require('../src/command/email-template')
+const { createEmailFragment } = require('../src/command/email-fragment')
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -41,10 +43,26 @@ program
 
 program
   .command('email-template')
-  .description('creates an email template HTML file')
+  .description('creates an email template HTML file in the current directory')
+  .argument('<directory name>', 'name of the HTML file')
+  .action((dirName) => {
+    createEmailTemplate({
+      rl,
+      logger,
+      dirName,
+    })
+  })
 
 program
   .command('email-fragment')
-  .description('creates an email fragment HTML file')
+  .description('creates an email fragment HTML file in the current directory')
+  .argument('<directory name>', 'name of the HTML file')
+  .action((dirName) => {
+    createEmailFragment({
+      rl,
+      logger,
+      dirName,
+    })
+  })
 
 program.parse()
